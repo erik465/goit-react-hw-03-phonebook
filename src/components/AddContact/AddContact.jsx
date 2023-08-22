@@ -17,6 +17,8 @@ const SignupSchema = Yup.object().shape({
   
 });
 
+
+
 export const AddContact = ({addContact}) =>{
     return(
         <Formik
@@ -26,8 +28,9 @@ export const AddContact = ({addContact}) =>{
          
         }}
         validationSchema={SignupSchema}
-        onSubmit={(values) => {
+        onSubmit={(values, { resetForm }) => {
           addContact(values.name, values.number)
+          resetForm()
         }}
       >
         <StyledForm>
