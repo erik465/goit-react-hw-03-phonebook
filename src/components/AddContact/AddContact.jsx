@@ -23,29 +23,31 @@ export const AddContact = ({addContact}) =>{
     return(
         <Formik
         initialValues={{
-          firstName: '',
+          name: '',
           number: '',
          
         }}
         validationSchema={SignupSchema}
         onSubmit={(values, { resetForm }) => {
           addContact(values.name, values.number)
-          resetForm()
+          resetForm({values: ''})
         }}
       >
         <StyledForm>
-          <label htmlFor="name">Name</label>
-          <Field id="name" name="name" placeholder="Name" />
-          <StyledError name='name' component='span'/>
+          <label htmlFor="name">Name
+            <Field id="name" type="text" name="name" placeholder="Name" />
+            <StyledError name='name' component='span'/>
+          </label>
 
-          <label htmlFor="number">Number</label>
-          <Field 
-            id="number" 
-            name="number" 
-            type="tel" 
-            placeholder="Number" 
-          />
-          <StyledError name='number' component='span'/>
+          <label htmlFor="number">Number
+            <Field 
+              id="number" 
+              name="number" 
+              type="tel" 
+              placeholder="Number" 
+            />
+            <StyledError name='number' component='span'/>
+          </label>
 
          
           <button type="submit">Add contact</button>
